@@ -44,7 +44,7 @@ layers:
   - NUM
   - Alt
   SYM:
-  - {t: F1, h: Gui}
+  - VOLUME UP
   - '1'
   - '2'
   - Ctl+3
@@ -68,8 +68,8 @@ layers:
   - →
   - Home
   - Page Up
-  - {t: '=', h: Alt}
-  - '1'
+  - VOLUME DOWN
+  - MUTE
   - '2'
   - '3'
   - '4'
@@ -84,7 +84,7 @@ layers:
   - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ⌦
   - {t: ▽, type: trans}
   NUM:
   - {t: KP NUM, h: Gui}
