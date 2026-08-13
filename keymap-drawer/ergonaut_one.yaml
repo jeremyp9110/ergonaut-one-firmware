@@ -47,7 +47,7 @@ layers:
   - VOLUME UP
   - '1'
   - '2'
-  - Ctl+3
+  - '3'
   - '4'
   - '5'
   - '6'
@@ -57,10 +57,10 @@ layers:
   - '0'
   - ⌫
   - {t: Caps Lock, h: LEFT SHIFT}
-  - '!'
-  - '@'
-  - '#'
-  - $
+  - PREVIOUS
+  - PLAY PAUSE
+  - ⏭️
+  - STOP
   - '%'
   - ←
   - DOWN ARROW
@@ -70,8 +70,8 @@ layers:
   - Page Up
   - VOLUME DOWN
   - MUTE
-  - '2'
-  - '3'
+  - BRIGHTNESS DEC
+  - BRIGHTNESS INC
   - '4'
   - '5'
   - '6'
@@ -130,18 +130,18 @@ layers:
   - {type: held}
   - {t: ▽, type: trans}
   ADJ:
-  - Boot
-  - '&studio_unlock'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - '&studio_unlock'
-  - Boot
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
+  - F6
+  - F7
+  - F8
+  - F9
+  - F10
+  - F11
+  - F12
   - BT CLR
   - BT 1
   - BT 2
@@ -154,18 +154,18 @@ layers:
   - BT 2
   - BT 1
   - BT CLR
+  - Boot
   - Reset
+  - '&studio_unlock'
   - ''
   - ''
   - ''
   - ''
   - ''
   - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - '&studio_unlock'
   - Reset
+  - Boot
   - {t: ▽, type: trans}
   - ''
   - {type: held}
