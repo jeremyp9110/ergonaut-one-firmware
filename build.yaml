@@ -15,3 +15,7 @@ include:
     artifact-name: ergonaut_one_right_studio
   - board: xiao_ble//zmk
     shield: settings_reset
+  # --- NOUVEAU : DONGLE SNAKE ---
+  - board: xiao_ble//zmk
+    shield: ergonaut_one_dongle snake_adapter
+    artifact-name: snake_dongle
