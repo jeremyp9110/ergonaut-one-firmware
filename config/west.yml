@@ -16,6 +16,6 @@ manifest:
       revision: main
     - name: snake-module           # <--- AJOUT
       remote: joaopedropio        # <--- AJOUT
-      revision: zephyr-4.1         # <--- AJOUT (car ZMK est en main)
+      revision: main         # <--- AJOUT (car ZMK est en main)
   self:
     path: config
