@@ -1,49 +1,63 @@
 / {
     chosen {
-        zmk,kscan = &mock_kscan;
+        zmk,kscan = &kscan0;
         zephyr,display = &st7789;
     };
 
-    mock_kscan: kscan {
-        compatible = "zmk,kscan-mock";
-        columns = <0>;
-        rows = <0>;
-        events = <0>;
+    /* Rétroéclairage de l'écran sur P1.04 */
+    backlight: backlight {
+        compatible = "gpio-leds";
+        backlight_led: backlight_led {
+            gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+            label = "Backlight";
+        };
+    };
+
+    /* Gestion du bouton utilisateur sur P0.31 */
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-direct";
+        wakeup-source;
+        input-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 };
 
+/* Configuration du contrôleur de broches SPI (Pinctrl) */
 &pinctrl {
     spi1_default: spi1_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 17)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 25)>;
+            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,   /* SCL -> P0.17 */
+                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;  /* SDA -> P0.20 */
         };
     };
 
     spi1_sleep: spi1_sleep {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 17)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 25)>;
+            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;
             low-power-enable;
         };
     };
 };
 
+/* Configuration du bus SPI1 et de l'écran ST7789 */
 &spi1 {
     status = "okay";
     pinctrl-0 = <&spi1_default>;
     pinctrl-1 = <&spi1_sleep>;
     pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
+    
+    /* CS sur P0.11 */
+    cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 
     st7789: st7789@0 {
         compatible = "sitronix,st7789v";
         reg = <0>;
         spi-max-frequency = <20000000>;
+        
+        /* DC sur P0.24 et RST sur P0.22 */
         cmd-data-gpios = <&gpio0 24 GPIO_ACTIVE_LOW>;
-        reset-gpios = <&gpio1 00 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
+        
         width = <240>;
         height = <240>;
         x-offset = <0>;
