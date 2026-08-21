@@ -16,6 +16,6 @@ include:
   - board: xiao_ble//zmk
     shield: settings_reset
   # --- NOUVEAU : DONGLE SNAKE ---
-  - board: xiao_ble//zmk
+  - board: nice_nano_v2
     shield: ergonaut_one_dongle snake_adapter
     artifact-name: snake_dongle
