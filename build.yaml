@@ -1,25 +1,21 @@
-include:
-  - board: xiao_ble//zmk
-    shield: ergonaut_one_left
-  - board: xiao_ble//zmk
-    shield: ergonaut_one_right
-  - board: xiao_ble//zmk
-    shield: ergonaut_one_left
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: ergonaut_one_left_studio
-  - board: xiao_ble//zmk
-    shield: ergonaut_one_right
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: ergonaut_one_right_studio
-  - board: xiao_ble//zmk
-    shield: settings_reset
-  # Dongle Snake
-  - board: promicro_nrf52840//zmk
-    shield: ergonaut_one_dongle snake_adapter
-    artifact-name: snake_dongle
-  # Optionnel : settings_reset pour la board promicro_nrf52840 (si besoin)
-  # - board: promicro_nrf52840
-  #   shield: settings_reset
-  #   artifact-name: settings_reset_promicro
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: ergonautkb
+      url-base: https://github.com/ergonautkb
+    - name: joaopedropio
+      url-base: https://github.com/joaopedropio
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+    - name: ergonautkb-zmk-module
+      remote: ergonautkb
+      revision: main
+    - name: snake-dongle
+      remote: joaopedropio
+      revision: master
+  self:
+    path: config
