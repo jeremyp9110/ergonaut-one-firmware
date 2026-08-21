@@ -16,6 +16,6 @@ manifest:
       revision: main
     - name: snake-dongle
       remote: joaopedropio
-      revision: master
+      revision: main
   self:
     path: config
