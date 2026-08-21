@@ -16,7 +16,7 @@ include:
   - board: xiao_ble//zmk
     shield: settings_reset
   # Dongle Snake
-  - board: promicro_nrf52840
+  - board: promicro_nrf52840//zmk
     shield: ergonaut_one_dongle snake_adapter
     artifact-name: snake_dongle
   # Optionnel : settings_reset pour la board promicro_nrf52840 (si besoin)
