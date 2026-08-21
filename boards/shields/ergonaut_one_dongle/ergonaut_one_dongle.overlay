@@ -4,10 +4,10 @@
         zephyr,display = &st7789;
     };
 
-    /* Configuration du rétroéclairage en PWM pour Prospector */
+    /* Configuration PWM attendue par le module Prospector */
     pwm_leds: pwm_leds {
         compatible = "pwm-leds";
-        pwm_backlight: pwm_backlight {
+        disp_bl: disp_bl {
             pwms = <&pwm0 0 PWM_MSEC(20) PWM_POLARITY_INVERTED>;
             label = "Backlight PWM";
         };
