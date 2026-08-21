@@ -14,7 +14,7 @@ manifest:
     - name: ergonautkb-zmk-module
       remote: ergonautkb
       revision: main
-    - name: snake-module           # <--- AJOUT
+    - name: snake-dongle          # <--- AJOUT
       remote: joaopedropio        # <--- AJOUT
       revision: main         # <--- AJOUT (car ZMK est en main)
   self:
