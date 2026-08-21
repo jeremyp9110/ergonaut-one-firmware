@@ -15,16 +15,11 @@ include:
     artifact-name: ergonaut_one_right_studio
   - board: xiao_ble//zmk
     shield: settings_reset
-  # --- NOUVEAU : DONGLE SNAKE ---
+  # Dongle Snake
   - board: promicro_nrf52840
     shield: ergonaut_one_dongle snake_adapter
     artifact-name: snake_dongle
-  - board: promicro_nrf52840
-    shield: swoop_left
-    artifact-name: swoop_left
-  - board: promicro_nrf52840
-    shield: swoop_right
-    artifact-name: swoop_right
-  - board: promicro_nrf52840
-    shield: settings_reset
-    artifact-name: settings_reset
+  # Optionnel : settings_reset pour la board promicro_nrf52840 (si besoin)
+  # - board: promicro_nrf52840
+  #   shield: settings_reset
+  #   artifact-name: settings_reset_promicro
