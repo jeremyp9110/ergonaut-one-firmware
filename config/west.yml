@@ -4,8 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: ergonautkb
       url-base: https://github.com/ergonautkb
-    - name: joaopedropio           # <--- AJOUT
-      url-base: https://github.com/joaopedropio  # <--- AJOUT
+    - name: snake-dongle           # <--- AJOUT
+      url-base: https://github.com/joaopedropio/snake-dongle  # <--- AJOUT
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -15,7 +15,7 @@ manifest:
       remote: ergonautkb
       revision: main
     - name: snake-module           # <--- AJOUT
-      remote: joaopedropio         # <--- AJOUT
+      remote: snake-dongle        # <--- AJOUT
       revision: zephyr-4.1         # <--- AJOUT (car ZMK est en main)
   self:
     path: config
