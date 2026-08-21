@@ -14,8 +14,8 @@ manifest:
     - name: ergonautkb-zmk-module
       remote: ergonautkb
       revision: main
-    - name: snake-dongle
+    - name: snake-module
       remote: joaopedropio
-      revision: master
+      revision: zephyr-4.1
   self:
     path: config
