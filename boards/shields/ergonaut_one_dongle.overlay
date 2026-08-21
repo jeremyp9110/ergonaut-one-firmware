@@ -1,47 +1,65 @@
-#include <dt-bindings/led/led.h>
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+        zephyr,display = &st7789;
+    };
+
+    mock_kscan: kscan {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};
 
 &pinctrl {
-	spi1_default: spi1_default {
-		group1 {
-			psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
-		};
-	};
+    spi1_default: spi1_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 17)>,
+                    <NRF_PSEL(SPIM_MISO, 0, 25)>;
+        };
+    };
 
-	spi1_sleep: spi1_sleep {
-		group1 {
-			psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
-			low-power-enable;
-		};
-	};
+    spi1_sleep: spi1_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 20)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 17)>,
+                    <NRF_PSEL(SPIM_MISO, 0, 25)>;
+            low-power-enable;
+        };
+    };
 };
 
 &spi1 {
-	compatible = "nordic,nrf-spim";
-	status = "okay";
+    status = "okay";
+    pinctrl-0 = <&spi1_default>;
+    pinctrl-1 = <&spi1_sleep>;
+    pinctrl-names = "default", "sleep";
+    cs-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
 
-	pinctrl-0 = <&spi1_default>;
-	pinctrl-1 = <&spi1_sleep>;
-	pinctrl-names = "default", "sleep";
-
-	led_strip: ws2812@0 {
-		compatible = "worldsemi,ws2812-spi";
-		label = "WS2812";
-
-		/* SPI */
-		reg = <0>; /* ignored, but necessary for SPI bindings */
-		spi-max-frequency = <4000000>;
-
-		/* WS2812 */
-		chain-length = <10>; /* arbitrary; change at will */
-		spi-one-frame = <0x70>;
-		spi-zero-frame = <0x40>;
-
-		color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
-	};
-};
-
-/ {
-	chosen {
-		zmk,underglow = &led_strip;
-	};
+    st7789: st7789@0 {
+        compatible = "sitronix,st7789v";
+        reg = <0>;
+        spi-max-frequency = <20000000>;
+        cmd-data-gpios = <&gpio0 24 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio1 00 GPIO_ACTIVE_LOW>;
+        width = <240>;
+        height = <240>;
+        x-offset = <0>;
+        y-offset = <0>;
+        vcom = <0x19>;
+        gctrl = <0x35>;
+        vrhs = <0x12>;
+        vdvs = <0x20>;
+        mdac = <0x00>;
+        gamma = <0x01>;
+        colmod = <0x05>;
+        lcm = <0x2c>;
+        porch-param = [0c 0c 00 33 33];
+        cmd2bk = [04 2f 11 42 02];
+        pwctrl1 = [a4 a1];
+        pvgamctrl = [d0 04 0d 11 13 2b 3f 54 4c 18 0d 0b 1f 23];
+        nvgamctrl = [d0 04 0c 11 13 2c 3f 44 51 2f 1f 1f 20 23];
+    };
 };
