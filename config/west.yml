@@ -16,6 +16,6 @@ manifest:
       revision: main
     - name: snake-dongle          # <--- AJOUT
       remote: joaopedropio        # <--- AJOUT
-      revision: main         # <--- AJOUT (car ZMK est en main)
+      revision: master         # <--- AJOUT (car ZMK est en main)
   self:
     path: config
