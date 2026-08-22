@@ -7,7 +7,9 @@
 #include <zmk/keymap.h>
 #include <draw/lv_draw_mask.h>
 #include <fonts.h>
-
+#include <lvgl.h>
+#include <draw/lv_draw_mask.h>
+#include <misc/lv_mem.h>
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
