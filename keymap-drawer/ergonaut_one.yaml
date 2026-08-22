@@ -157,12 +157,12 @@ layers:
   - Boot
   - Reset
   - '&studio_unlock'
+  - '&studio_unlock'
   - ''
   - ''
   - ''
   - ''
-  - ''
-  - ''
+  - '&studio_unlock'
   - '&studio_unlock'
   - Reset
   - Boot
