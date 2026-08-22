@@ -5,7 +5,7 @@
 #include <zmk/events/layer_state_changed.h>
 #include <zmk/event_manager.h>
 #include <zmk/keymap.h>
-
+#include <draw/lv_draw_mask.h>
 #include <fonts.h>
 
 #include <zephyr/logging/log.h>
