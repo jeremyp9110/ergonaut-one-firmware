@@ -48,6 +48,7 @@ config LV_COLOR_16_SWAP
 	default y
 
 config LV_DISP_DEF_REFR_PERIOD
+	int
     default 20
 
 choice LV_FONT_DEFAULT
@@ -61,7 +62,7 @@ config LED
     default y
 
 config PROSPECTOR_USE_AMBIENT_LIGHT_SENSOR
-    select SENSOR
-    select APDS9960
+	bool
+	default n
 
 endif
