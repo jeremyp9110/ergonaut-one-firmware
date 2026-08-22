@@ -3,6 +3,3 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-include:
-  - board: nice_nano@2.0.0//zmk      # <-- Changement ici (plus de seeeduino_xiao_ble)
-    shield: ergonaut_one_dongle  # <-- On garde UNIQUEMENT ton shield personnalisé
