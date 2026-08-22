@@ -11,7 +11,7 @@
         zmk,backlight = &disp_bl;
     };
 
-    /* Scanner factice pour dongle */
+    /* Scanner factice pour dongle sans matrice physique */
     mock_kscan: kscan_0 {
         compatible = "zmk,kscan-mock";
         columns = <0>;
@@ -19,7 +19,7 @@
         events = <0>;
     };
 
-    /* Matrice des 42 touches de l'Ergonaut One */
+    /* Disposition des 42 touches de l'Ergonaut One */
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <12>;
@@ -32,7 +32,7 @@
         >;
     };
 
-    /* Configuration du Bouton 1 sur GPIO 0.31 */
+    /* Bouton sur P0.31 */
     gpio_keys {
         compatible = "gpio-keys";
         user_button: button_0 {
@@ -41,7 +41,7 @@
         };
     };
 
-    /* Rétroéclairage PWM assigné à P1.04 */
+    /* Rétroéclairage PWM sur P1.04 */
     pwm_leds: pwm_leds {
         compatible = "pwm-leds";
         disp_bl: disp_bl {
@@ -51,7 +51,7 @@
     };
 };
 
-/* Mappage des broches hardware P0.17 (SCL), P0.20 (SDA) et P1.04 (BL) */
+/* Définition des broches matérielles */
 &pinctrl {
     spi1_default: spi1_default {
         group1 {
@@ -114,14 +114,17 @@
             x-offset = <0>;
             y-offset = <0>;
 
-            vcom-param = [19];
-            gctrl-param = [35];
-            vrhs-param = [12];
-            vdvs-param = [20];
-            mdac-param = [00];
-            gamma-param = [01];
-            colmod-param = [05];
-            lcm-param = [2c];
+            /* Propriétés scalaires (valeurs simples) */
+            vcom = <0x19>;
+            gctrl = <0x35>;
+            vrhs = <0x12>;
+            vdvs = <0x20>;
+            mdac = <0x00>;
+            gamma = <0x01>;
+            colmod = <0x05>;
+            lcm = <0x2c>;
+
+            /* Propriétés sous forme de tableaux d'octets */
             porch-param = [0c 0c 00 33 33];
             cmd2bk-param = [04 2f 11 42 02];
             cmd2en-param = [5a 69 02 01];
