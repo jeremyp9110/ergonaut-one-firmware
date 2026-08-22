@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: ergonautkb
       url-base: https://github.com/ergonautkb
+    - name: carrefinho  # <--- Ajoute ce remote
+      url-base: https://github.com/carrefinho
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -12,5 +14,8 @@ manifest:
     - name: ergonautkb-zmk-module
       remote: ergonautkb
       revision: main
+    - name: prospector-zmk-module  # <--- Ajoute ce projet
+      remote: carrefinho
+      revision: feat/new-status-screens
   self:
     path: config
