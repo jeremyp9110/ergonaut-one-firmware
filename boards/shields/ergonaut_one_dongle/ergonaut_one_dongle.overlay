@@ -10,7 +10,6 @@
         zmk,backlight = &disp_bl;
     };
 
-    /* Scanner factice pour dongle sans matrice physique */
     mock_kscan: kscan_0 {
         compatible = "zmk,kscan-mock";
         columns = <0>;
@@ -18,7 +17,6 @@
         events = <0>;
     };
 
-    /* Matrice de transformation des 42 touches Ergonaut One */
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <12>;
@@ -31,7 +29,6 @@
         >;
     };
 
-    /* Contrôle du rétroéclairage */
     pwm_leds: pwm_leds {
         compatible = "pwm-leds";
         disp_bl: disp_bl {
@@ -41,7 +38,6 @@
     };
 };
 
-/* Déclaration du bus SPI1 et du pilote ST7789 */
 &spi1 {
     status = "okay";
     cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
