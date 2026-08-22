@@ -1,0 +1,9 @@
+description: Extension du schéma ST7789V pour ajouter le support SPI direct
+
+include: sitronix,st7789v.yaml
+
+properties:
+  spi-max-frequency:
+    type: int
+    required: true
+    description: Fréquence maximale du bus SPI en Hz
