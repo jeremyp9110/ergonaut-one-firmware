@@ -24,7 +24,6 @@ config BT_MAX_PAIRED
 config ZMK_DISPLAY
     default y
 
-# Choix du workqueue – on le laisse par défaut ou on le force ici
 choice ZMK_DISPLAY_WORK_QUEUE
     default ZMK_DISPLAY_WORK_QUEUE_DEDICATED
 endchoice
@@ -37,22 +36,9 @@ config ZMK_DISPLAY_INIT_PRIORITY
     int
     default 80
 
-# Configuration LVGL pour l'écran ST7789
 choice ST7789V_PIXEL_FORMAT
     default ST7789V_RGB565
 endchoice
-
-config LV_Z_VDB_SIZE
-    int
-    default 20
-
-config LV_DPI_DEF
-    int
-    default 261
-
-config LV_Z_BITS_PER_PIXEL
-    int
-    default 16
 
 choice LV_COLOR_DEPTH
     default LV_COLOR_DEPTH_16
@@ -62,7 +48,6 @@ choice LV_FONT_DEFAULT
     default LV_FONT_DEFAULT_MONTSERRAT_20
 endchoice
 
-# Rétroéclairage
 config PWM
     default y
 
