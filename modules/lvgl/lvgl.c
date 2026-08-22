@@ -15,7 +15,7 @@
 #ifdef CONFIG_LV_Z_MEM_POOL_SYS_HEAP
 #include "lvgl_mem.h"
 #endif
-#include LV_MEM_CUSTOM_INCLUDE
+#include <stdlib.h>
 
 #define LOG_LEVEL CONFIG_LV_LOG_LEVEL
 #include <zephyr/logging/log.h>
