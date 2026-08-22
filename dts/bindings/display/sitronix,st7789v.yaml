@@ -1,9 +1,74 @@
-description: Extension du schéma ST7789V pour ajouter le support SPI direct
+description: Binding personnalisé ST7789V pour bus SPI direct
 
-include: sitronix,st7789v.yaml
+compatible: "sitronix,st7789v"
+
+include: [display-controller.yaml, spi-device.yaml]
 
 properties:
-  spi-max-frequency:
+  cmd-data-gpios:
+    type: phandle-array
+    required: true
+    description: GPIO pour le signal Command/Data (DC)
+
+  reset-gpios:
+    type: phandle-array
+    description: GPIO de réinitialisation
+
+  width:
     type: int
     required: true
-    description: Fréquence maximale du bus SPI en Hz
+
+  height:
+    type: int
+    required: true
+
+  x-offset:
+    type: int
+
+  y-offset:
+    type: int
+
+  vcom:
+    type: int
+
+  gctrl:
+    type: int
+
+  vrhs:
+    type: int
+
+  vdvs:
+    type: int
+
+  mdac:
+    type: int
+
+  gamma:
+    type: int
+
+  colmod:
+    type: int
+
+  lcm:
+    type: int
+
+  porch-param:
+    type: uint8-array
+
+  cmd2en-param:
+    type: uint8-array
+
+  pwctrl1-param:
+    type: uint8-array
+
+  pvgam-param:
+    type: uint8-array
+
+  nvgam-param:
+    type: uint8-array
+
+  ram-param:
+    type: uint8-array
+
+  rgb-param:
+    type: uint8-array
