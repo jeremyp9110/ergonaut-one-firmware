@@ -108,7 +108,8 @@ void battery_bar_connection_update_cb(struct connection_update_state state) {
 
 static struct connection_update_state battery_bar_get_connection_state(const zmk_event_t *eh) {
     const struct zmk_split_central_status_changed *conn_ev =
-        as_zmk_split_central_status_changed(eh);
+        /* Remplace la ligne 111 : */
+// as_zmk_split_central_status_changed(eh);
 
     LOG_DBG("Received connection event: slot=%d, connected=%s", conn_ev->slot, conn_ev->connected ? "true" : "false");
 
