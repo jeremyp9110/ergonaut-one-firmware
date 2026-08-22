@@ -1,9 +1,5 @@
-name: snake-module
+name: zmk-keyboard-ergonaut-one
+
 build:
-  cmake: .
-  kconfig: Kconfig
   settings:
     board_root: .
-    dts_root: .
-  depends:
-    - lvgl
