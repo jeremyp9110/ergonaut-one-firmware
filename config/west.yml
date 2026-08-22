@@ -14,5 +14,8 @@ manifest:
     - name: ergonautkb-zmk-module
       remote: ergonautkb
       revision: main
+    - name: prospector-zmk-module
+      repo-url: https://github.com/carrefinho/prospector-zmk-module
+      revision: feat/new-status-screens
   self:
     path: .
