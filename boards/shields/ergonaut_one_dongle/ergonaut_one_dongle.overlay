@@ -1,11 +1,10 @@
 / {
     chosen {
-        zmk,kscan = &kscan0;
         zephyr,display = &st7789;
         zmk,backlight = &disp_bl;
     };
 
-    /* Configuration PWM du rétroéclairage sur P1.04 */
+    /* Rétroéclairage PWM sur la broche P1.04 */
     pwm_leds: pwm_leds {
         compatible = "pwm-leds";
         disp_bl: disp_bl {
@@ -13,59 +12,11 @@
             label = "Backlight PWM";
         };
     };
-
-    /* Bouton utilisateur sur P0.31 */
-    kscan0: kscan {
-        compatible = "zmk,kscan-gpio-direct";
-        wakeup-source;
-        input-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-    };
 };
 
-/* Configuration des broches pinctrl (nRF52840) */
-&pinctrl {
-    pwm0_default: pwm0_default {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
-        };
-    };
-
-    pwm0_sleep: pwm0_sleep {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
-            low-power-enable;
-        };
-    };
-
-    spi1_default: spi1_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,   /* SCL -> P0.17 */
-                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;  /* SDA -> P0.20 */
-        };
-    };
-
-    spi1_sleep: spi1_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;
-            low-power-enable;
-        };
-    };
-};
-
-&pwm0 {
-    status = "okay";
-    pinctrl-0 = <&pwm0_default>;
-    pinctrl-1 = <&pwm0_sleep>;
-    pinctrl-names = "default", "sleep";
-};
-
+/* Surcharge du bus SPI1 et du contrôleur d'écran */
 &spi1 {
     status = "okay";
-    pinctrl-0 = <&spi1_default>;
-    pinctrl-1 = <&spi1_sleep>;
-    pinctrl-names = "default", "sleep";
-    
     cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 
     st7789: st7789@0 {
@@ -73,13 +24,15 @@
         reg = <0>;
         spi-max-frequency = <20000000>;
         
-        /* Propriétés MIPI indispensables pour le module Prospector */
-        mipi-max-frequency = <20000000>;
+        /* Propriétés MIPI requises par le module Prospector */
         mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
+        mipi-max-frequency = <20000000>;
 
+        /* Broches de contrôle */
         cmd-data-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
         reset-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
         
+        /* Paramètres physiques et d'initialisation */
         width = <240>;
         height = <240>;
         x-offset = <0>;
@@ -94,7 +47,6 @@
         lcm = <0x2c>;
         porch-param = [0c 0c 00 33 33];
         cmd2bk = [04 2f 11 42 02];
-        pwctrl1 = [a4 a1];
         pvgamctrl = [d0 04 0d 11 13 2b 3f 54 4c 18 0d 0b 1f 23];
         nvgamctrl = [d0 04 0c 11 13 2c 3f 44 51 2f 1f 1f 20 23];
     };
