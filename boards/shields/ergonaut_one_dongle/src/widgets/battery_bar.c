@@ -4,7 +4,6 @@
 #include <zmk/battery.h>
 #include <zmk/ble.h>
 #include <zmk/events/battery_state_changed.h>
-#include <zmk/events/split_central_status_changed.h>
 #include <zmk/event_manager.h>
 
 #include <fonts.h>
