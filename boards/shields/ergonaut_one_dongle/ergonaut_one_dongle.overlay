@@ -2,9 +2,10 @@
     chosen {
         zmk,kscan = &kscan0;
         zephyr,display = &st7789;
+        zmk,backlight = &disp_bl;
     };
 
-    /* Configuration PWM attendue par le module Prospector */
+    /* Configuration PWM du rétroéclairage sur P1.04 */
     pwm_leds: pwm_leds {
         compatible = "pwm-leds";
         disp_bl: disp_bl {
@@ -21,11 +22,11 @@
     };
 };
 
-/* Configuration pinctrl pour le PWM du rétroéclairage (P1.04) */
+/* Configuration des broches pinctrl (nRF52840) */
 &pinctrl {
     pwm0_default: pwm0_default {
         group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>; /* Broche P1.04 */
+            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
         };
     };
 
@@ -52,7 +53,6 @@
     };
 };
 
-/* Activation du périphérique PWM */
 &pwm0 {
     status = "okay";
     pinctrl-0 = <&pwm0_default>;
@@ -60,7 +60,6 @@
     pinctrl-names = "default", "sleep";
 };
 
-/* Bus SPI1 et écran ST7789 */
 &spi1 {
     status = "okay";
     pinctrl-0 = <&spi1_default>;
@@ -74,7 +73,11 @@
         reg = <0>;
         spi-max-frequency = <20000000>;
         
-        cmd-data-gpios = <&gpio0 24 GPIO_ACTIVE_LOW>;
+        /* Propriétés MIPI indispensables pour le module Prospector */
+        mipi-max-frequency = <20000000>;
+        mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
+
+        cmd-data-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
         reset-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
         
         width = <240>;
