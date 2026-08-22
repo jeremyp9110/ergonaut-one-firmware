@@ -89,7 +89,7 @@
     cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 
     st7789: st7789@0 {
-        compatible = "sitronix,st7789v";
+        compatible = "zmk,st7789v";
         reg = <0>;
         spi-max-frequency = <20000000>;
         cmd-data-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
