@@ -8,7 +8,7 @@
         zmk,matrix-transform = &default_transform;
         zmk,kscan = &mock_kscan;
         zephyr,display = &st7789;
-        zmk,backlight = &disp_bl;
+        zmk,backlight = &pwm_leds;
     };
 
     mock_kscan: kscan_0 {
