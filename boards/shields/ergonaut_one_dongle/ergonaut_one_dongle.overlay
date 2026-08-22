@@ -11,7 +11,6 @@
         zmk,backlight = &disp_bl;
     };
 
-    /* Scanner factice pour dongle sans matrice physique */
     mock_kscan: kscan_0 {
         compatible = "zmk,kscan-mock";
         columns = <0>;
@@ -19,7 +18,6 @@
         events = <0>;
     };
 
-    /* Disposition des 42 touches de l'Ergonaut One */
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <12>;
@@ -32,7 +30,6 @@
         >;
     };
 
-    /* Bouton utilisateur sur P0.31 */
     gpio_keys {
         compatible = "gpio-keys";
         user_button: button_0 {
@@ -41,7 +38,6 @@
         };
     };
 
-    /* Rétroéclairage PWM sur P1.04 */
     pwm_leds: pwm_leds {
         compatible = "pwm-leds";
         disp_bl: disp_bl {
@@ -49,54 +45,8 @@
             label = "Backlight PWM";
         };
     };
-};
 
-/* Configuration des broches matérielles (Pinctrl) */
-&pinctrl {
-    spi1_default: spi1_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;
-        };
-    };
-
-    spi1_sleep: spi1_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;
-            low-power-enable;
-        };
-    };
-
-    pwm0_default: pwm0_default {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
-        };
-    };
-
-    pwm0_sleep: pwm0_sleep {
-        group1 {
-            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
-            low-power-enable;
-        };
-    };
-};
-
-&pwm0 {
-    status = "okay";
-    pinctrl-0 = <&pwm0_default>;
-    pinctrl-1 = <&pwm0_sleep>;
-    pinctrl-names = "default", "sleep";
-};
-
-/* Contrôleur SPI1 pour l'écran */
-&spi1 {
-    status = "okay";
-    pinctrl-0 = <&spi1_default>;
-    pinctrl-1 = <&spi1_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
-
+    /* Le pont MIPI DBI est maintenant à la racine */
     mipi_dbi: mipi_dbi {
         compatible = "zephyr,mipi-dbi-spi";
         spi-dev = <&spi1>;
@@ -114,7 +64,6 @@
             x-offset = <0>;
             y-offset = <0>;
 
-            /* Paramètres d'initialisation obligatoires pour l'écran ST7789V */
             vcom = <0x19>;
             gctrl = <0x35>;
             vrhs = <0x12>;
@@ -133,4 +82,46 @@
             mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
         };
     };
+};
+
+&pinctrl {
+    spi1_default: spi1_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;
+        };
+    };
+    spi1_sleep: spi1_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;
+            low-power-enable;
+        };
+    };
+    pwm0_default: pwm0_default {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
+        };
+    };
+    pwm0_sleep: pwm0_sleep {
+        group1 {
+            psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
+            low-power-enable;
+        };
+    };
+};
+
+&pwm0 {
+    status = "okay";
+    pinctrl-0 = <&pwm0_default>;
+    pinctrl-1 = <&pwm0_sleep>;
+    pinctrl-names = "default", "sleep";
+};
+
+&spi1 {
+    status = "okay";
+    pinctrl-0 = <&spi1_default>;
+    pinctrl-1 = <&spi1_sleep>;
+    pinctrl-names = "default", "sleep";
+    cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
 };
