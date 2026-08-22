@@ -1,0 +1,376 @@
+config ROTATE_DISPLAY
+    int "Rotate the display"
+    default 0
+
+config DEFAULT_SCREEN
+    string "Default screen"
+    default "snake"
+
+config BATTERY_SLOTS
+    int "Battery Slots"
+    default 2
+
+config USE_BATTERY_FONT_3X5
+    bool "Use battery font 3x5"
+    default n
+
+config DISPLAY_BRIGHTNESS
+    int "Display brightness"
+    default 100
+
+config MUTE_THRESHOLD
+    int "Mute threshold"
+    default 600
+
+config THEME_THRESHOLD
+    int "Theme threshold"
+    default 300
+
+config THEME_PRIMARY_COLOR
+    string "Theme primary color"
+    default "3dff98"
+
+config THEME_SECONDARY_COLOR
+    string "Theme secondary color"
+    default "ff4adc"
+
+config THEME_BG_COLOR
+    string "Theme background color"
+    default "222323"
+    
+config THEME_BG_DARKER_COLOR
+    string "Theme background darker color"
+    default "121313"
+
+config SNAKE_FATNESS
+    int "Snake fatness"
+    default 2
+
+config SPLASH_USE_SNAKE_2
+    bool "Use Snake 2 Splash screen"
+    default n
+
+config USE_SPLASH_SOUND
+    bool "Use splash sound"
+    default n
+
+config USE_FOOD_SOUND
+    bool "Use food sound"
+    default n
+
+config USE_DIE_SOUND
+    bool "Use food sound"
+    default n
+
+config USE_STATUS_SOUND
+    bool "Use status sound"
+    default y
+
+config USE_THEME_SOUND
+    bool "Use theme sound"
+    default n
+
+config USE_MENU_SOUND
+    bool "Use menu sound"
+    default n
+
+config USE_BUZZER
+    bool "Use buzzer"
+    default n
+
+config INFO_SLOT_MODE
+    string "Info slot mode"
+    default "2-slot"
+
+config INFO_SLOT_1
+    string "Info slot 1"
+    default "modifiers"
+
+config INFO_SLOT_2
+    string "Info slot 2"
+    default "theme"
+
+config INFO_SLOT_3
+    string "Info slot 3"
+    default "wpm"
+
+config INFO_SLOT_4
+    string "Info slot 4"
+    default "empty"
+
+config INFO_SLOT_5
+    string "Info slot 5"
+    default "connectivity"
+
+config INFO_SLOT_6
+    string "Info slot 6"
+    default "layer"
+
+config SNAKE_BOARD_SIZE
+    string "Snake board size"
+    default "XL"
+
+config SNAKE_WALK_INTERVAL
+    int "Snake walk interval"
+    default 10
+
+config LOGO_WALK_INTERVAL
+    int "Logo walk interval"
+    default 50
+
+config CHECKERED_BOARD
+    bool "Checkered board"
+    default y
+
+config WPM_SLOW
+    int "WPM slow"
+    default 20
+
+config WPM_MEDIUM
+    int "WPM medium"
+    default 40
+
+config WPM_FAST
+    int "WPM fast"
+    default 80
+
+config WPM_SUPER_FAST
+    int "WPM super fast"
+    default 90
+    
+config USE_COMPLETE_CUSTOM_THEME
+    bool "Complete custom theme"
+    default y
+
+config SPLASH_MULTICOLOR_0
+    string ""
+    default "212121"
+
+config SPLASH_MULTICOLOR_1
+    string ""
+    default "FEE440"
+
+config SPLASH_MULTICOLOR_2
+    string ""
+    default "FF4D6D"
+
+config SPLASH_MULTICOLOR_3
+    string ""
+    default "3C1642"
+
+config SPLASH_LOGO_COLOR
+    string ""
+    default "FF6B81"
+
+config SPLASH_CREATED_BY_COLOR
+    string ""
+    default "7FDBFF"
+
+config SPLASH_BG_COLOR
+    string ""
+    default "212121"
+
+config SNAKE_DEFAULT_COLOR
+    string ""
+    default "00FFC6"
+
+config SNAKE_BOARD_COLOR
+    string ""
+    default "004643"
+
+config SNAKE_BOARD_1_COLOR
+    string ""
+    default "00ADB5"
+
+config FOOD_COLOR
+    string ""
+    default "FF9F1C"
+
+config SNAKE_COLOR_0
+    string ""
+    default "FF206E"
+
+config SNAKE_COLOR_1
+    string ""
+    default "FB5607"
+
+config SNAKE_COLOR_2
+    string ""
+    default "8338EC"
+
+config SNAKE_COLOR_3
+    string ""
+    default "3A86FF"
+
+config SNAKE_COLOR_4
+    string ""
+    default "6A4C93"
+
+config SNAKE_COLOR_5
+    string ""
+    default "B5179E"
+
+config SNAKE_COLOR_6
+    string ""
+    default "80ED99"
+
+config BATTERY_WIDGET_NUMBER
+    int ""
+    default 0
+
+config BATTERY_WIDGET_NUM_COLOR
+    string ""
+    default "FF8C00"
+
+config BATTERY_WIDGET_PERCENTAGE_COLOR
+    string ""
+    default "66FF66"
+
+config BATTERY_WIDGET_TEXT_COLOR
+    string ""
+    default "A0A0A0"
+
+config BATTERY_WIDGET_BG_COLOR
+    string ""
+    default "212121"
+
+config BATTERY_NUM_COLOR
+    string ""
+    default "FF8C00"
+
+config BATTERY_PERCENTAGE_COLOR
+    string ""
+    default "66FF66"
+
+config BATTERY_BG_COLOR
+    string ""
+    default "212121"
+
+config BATTERY_NUM_COLOR_1
+    string ""
+    default "FF8C00"
+
+config BATTERY_PERCENTAGE_COLOR_1
+    string ""
+    default "66FF66"
+
+config BATTERY_BG_COLOR_1
+    string ""
+    default "212121"
+
+config BATTERY_NUM_COLOR_2
+    string ""
+    default "FF8C00"
+
+config BATTERY_PERCENTAGE_COLOR_2
+    string ""
+    default "66FF66"
+
+config BATTERY_BG_COLOR_2
+    string ""
+    default "212121"
+
+config MODIFIER_SELECTED_COLOR
+    string ""
+    default "9D4EDD"
+
+config MODIFIER_UNSELECTED_COLOR
+    string ""
+    default "4A4E69"
+
+config MODIFIER_BG_COLOR
+    string ""
+    default "212121"
+
+config SYMBOL_SELECTED_COLOR
+    string ""
+    default "FFD700"
+
+config SYMBOL_UNSELECTED_COLOR
+    string ""
+    default "8D99AE"
+
+config SYMBOL_BG_COLOR
+    string ""
+    default "212121"
+
+config BT_STATUS_OK_COLOR
+    string ""
+    default "28A745"
+
+config BT_STATUS_NOT_OK_COLOR
+    string ""
+    default "DC3545"
+
+config BT_STATUS_OPEN_COLOR
+    string ""
+    default "FFD166"
+
+config BT_STATUS_BG_COLOR
+    string ""
+    default "212121"
+
+config BT_NUM_COLOR
+    string ""
+    default "06D6A0"
+
+config BT_BG_COLOR
+    string ""
+    default "212121"
+
+config LAYER_FONT_COLOR
+    string ""
+    default "E0E0E0"
+
+config LAYER_FONT_BG_COLOR
+    string ""
+    default "212121"
+
+config THEME_FONT_BG_COLOR
+    string ""
+    default "212121"
+
+config THEME_FONT_COLOR
+    string ""
+    default "A0A0A0"
+
+config THEME_FONT_COLOR_1
+    string ""
+    default "E0E0E0"
+
+config LOGO_FONT_COLOR
+    string ""
+    default "FF4D6D"
+
+config LOGO_SNAKE_COLOR
+    string ""
+    default "00C896"
+
+config LOGO_BG_COLOR
+    string ""
+    default "212121"
+
+config FRAME_COLOR
+    string ""
+    default "FEE440"
+
+config FRAME_COLOR_1
+    string ""
+    default "D3AE21"
+
+config MENU_BG_COLOR
+    string ""
+    default "212121"
+
+config WPM_FONT_COLOR
+    string ""
+    default "A0A0A0"
+
+config WPM_FONT_1_COLOR
+    string ""
+    default "E0E0E0"
+
+config WPM_FONT_BG_COLOR
+    string ""
+    default "212121"
+
