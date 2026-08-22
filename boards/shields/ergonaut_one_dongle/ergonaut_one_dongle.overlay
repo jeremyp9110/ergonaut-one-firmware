@@ -45,47 +45,6 @@
             label = "Backlight PWM";
         };
     };
-
-    /* Le pont MIPI DBI est à la racine */
-    mipi_dbi: mipi_dbi {
-        compatible = "zephyr,mipi-dbi-spi";
-        spi-dev = <&spi1>;
-        dc-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
-        reset-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
-        #address-cells = <1>;
-        #size-cells = <0>;
-
-        st7789: st7789@0 {
-            compatible = "sitronix,st7789v";
-            reg = <0>;
-            
-            /* Ajout de la propriété requise par le pilote SPI */
-            spi-max-frequency = <20000000>;
-            mipi-max-frequency = <20000000>;
-            
-            width = <240>;
-            height = <240>;
-            x-offset = <0>;
-            y-offset = <0>;
-
-            vcom = <0x19>;
-            gctrl = <0x35>;
-            vrhs = <0x12>;
-            vdvs = <0x20>;
-            mdac = <0x00>;
-            gamma = <0x01>;
-            colmod = <0x05>;
-            lcm = <0x2c>;
-            porch-param = [0c 0c 00 33 33];
-            cmd2en-param = [5a 69 02 01];
-            pwctrl1-param = [a4 a1];
-            pvgam-param = [d0 04 0d 11 13 2b 3f 54 4c 18 0d 0b 1f 23];
-            nvgam-param = [d0 04 0c 11 13 2c 3f 44 51 2f 1f 1f 20 23];
-            ram-param = [00 f0];
-            rgb-param = [00 00 06 06 00];
-            mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
-        };
-    };
 };
 
 &pinctrl {
@@ -128,4 +87,33 @@
     pinctrl-1 = <&spi1_sleep>;
     pinctrl-names = "default", "sleep";
     cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
+
+    st7789: st7789@0 {
+        compatible = "sitronix,st7789v";
+        reg = <0>;
+        spi-max-frequency = <20000000>;
+        cmd-data-gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
+        reset-gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;
+
+        width = <240>;
+        height = <240>;
+        x-offset = <0>;
+        y-offset = <0>;
+
+        vcom = <0x19>;
+        gctrl = <0x35>;
+        vrhs = <0x12>;
+        vdvs = <0x20>;
+        mdac = <0x00>;
+        gamma = <0x01>;
+        colmod = <0x05>;
+        lcm = <0x2c>;
+        porch-param = [0c 0c 00 33 33];
+        cmd2en-param = [5a 69 02 01];
+        pwctrl1-param = [a4 a1];
+        pvgam-param = [d0 04 0d 11 13 2b 3f 54 4c 18 0d 0b 1f 23];
+        nvgam-param = [d0 04 0c 11 13 2c 3f 44 51 2f 1f 1f 20 23];
+        ram-param = [00 f0];
+        rgb-param = [00 00 06 06 00];
+    };
 };
