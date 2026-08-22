@@ -1,6 +1,6 @@
-description: Extension de binding ST7789V pour bus SPI direct
+description: Binding personnalisé ST7789V sur bus SPI direct
 
-compatible: "sitronix,st7789v"
+compatible: "zmk,st7789v"
 
 include: [display-controller.yaml, spi-device.yaml]
 
@@ -12,7 +12,7 @@ properties:
 
   reset-gpios:
     type: phandle-array
-    description: Broche GPIO de Reset
+    description: Broche GPIO de Réinitialisation
 
   width:
     type: int
