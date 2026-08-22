@@ -4,7 +4,7 @@ config ZMK_SPLIT_BLE_CENTRAL_BATTERY_LEVEL_FETCHING
     default y
 
 config ZMK_DISPLAY
-   default y
+    default y
 
 choice ZMK_DISPLAY_STATUS_SCREEN
     default ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
@@ -25,30 +25,35 @@ config ZMK_DISPLAY_DEDICATED_THREAD_STACK_SIZE
     default 4096
 
 choice ST7789V_PIXEL_FORMAT
-	default ST7789V_RGB565
+    default ST7789V_RGB565
 endchoice
 
 config LV_Z_VDB_SIZE
-    default 100
+    int
+    default 20
 
 config LV_Z_MEM_POOL_SIZE
+    int
     default 10000
 
 config LV_DPI_DEF
+    int
     default 261
 
 config LV_Z_BITS_PER_PIXEL
-	default 16
+    int
+    default 16
 
 choice LV_COLOR_DEPTH
-	default LV_COLOR_DEPTH_16
+    default LV_COLOR_DEPTH_16
 endchoice
 
 config LV_COLOR_16_SWAP
-	default y
+    bool
+    default y
 
 config LV_DISP_DEF_REFR_PERIOD
-	int
+    int
     default 20
 
 choice LV_FONT_DEFAULT
@@ -56,13 +61,19 @@ choice LV_FONT_DEFAULT
 endchoice
 
 config PWM
+    bool
     default y
 
 config LED
+    bool
     default y
 
 config PROSPECTOR_USE_AMBIENT_LIGHT_SENSOR
-	bool
-	default n
+    bool
+    default n
+
+config PROSPECTOR_FIXED_BRIGHTNESS
+    int
+    default 100
 
 endif
