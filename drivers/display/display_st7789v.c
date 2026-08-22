@@ -9,7 +9,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define DT_DRV_COMPAT sitronix_st7789v
+#define DT_DRV_COMPAT zmk_st7789v
 
 #include "display_st7789v.h"
 
