@@ -1,4 +1,4 @@
-description: Binding personnalisé ST7789V pour bus SPI direct
+description: Extension de binding ST7789V pour bus SPI direct
 
 compatible: "sitronix,st7789v"
 
@@ -8,11 +8,11 @@ properties:
   cmd-data-gpios:
     type: phandle-array
     required: true
-    description: GPIO pour le signal Command/Data (DC)
+    description: Broche GPIO Commande/Data (DC)
 
   reset-gpios:
     type: phandle-array
-    description: GPIO de réinitialisation
+    description: Broche GPIO de Reset
 
   width:
     type: int
