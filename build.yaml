@@ -5,6 +5,7 @@ include:
     artifact-name: ergonaut_one_left_peripheral
   - board: xiao_ble//zmk
     shield: ergonaut_one_right
+    artifact-name: ergonaut_one_right_peripheral
   - board: xiao_ble//zmk
     shield: ergonaut_one_left
     snippet: studio-rpc-usb-uart
@@ -18,15 +19,14 @@ include:
   - board: xiao_ble//zmk
     shield: settings_reset
   
-  # Dongle CENTRAL (sans studio)
+  # Dongle CENTRAL (sans studio) — pour production
   - board: nice_nano@2.0.0//zmk
     shield: ergonaut_one_dongle prospector_adapter
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_USB=y
     artifact-name: ergonaut_one_dongle_central
   
-  # Dongle CENTRAL avec studio
+  # Dongle CENTRAL avec studio — pour debug
   - board: nice_nano@2.0.0//zmk
     shield: ergonaut_one_dongle prospector_adapter
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_USB=y -DCONFIG_ZMK_STUDIO=y
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: ergonaut_one_dongle_studio
