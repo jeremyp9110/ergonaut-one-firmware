@@ -63,7 +63,6 @@
             compatible = "sitronix,st7789v";
             reg = <0>;
             mipi-max-frequency = <8000000>;
-            mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
 
             /* Dalle 1.54" : 240x240, pas de décalage RAM */
             width = <240>;
