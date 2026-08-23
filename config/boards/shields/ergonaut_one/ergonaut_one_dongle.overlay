@@ -101,14 +101,14 @@
                     <NRF_PSEL(SPIM_MISO, 0, 19)>;
         };
     };
-    spi1_sleep: spi1_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 20)>;
-                    <NRF_PSEL(SPIM_MISO, 0, 19)>;
-            low-power-enable;
-        };
+spi1_sleep: spi1_sleep {
+    group1 {
+        psels = <NRF_PSEL(SPIM_SCK, 0, 17)>,
+                <NRF_PSEL(SPIM_MOSI, 0, 20)>,
+                <NRF_PSEL(SPIM_MISO, 0, 19)>;
+        low-power-enable;
     };
+};
     pwm0_default: pwm0_default {
         group1 {
             psels = <NRF_PSEL(PWM_OUT0, 1, 4)>;
