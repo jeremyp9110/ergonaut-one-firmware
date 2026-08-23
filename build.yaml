@@ -15,9 +15,14 @@ include:
     artifact-name: ergonaut_one_right_studio
   - board: xiao_ble//zmk
     shield: settings_reset
-  - board: nice_nano@2.0.0//zmk      # <-- Changement ici (plus de seeeduino_xiao_ble)
-    shield: ergonaut_one_dongle  # <-- On garde UNIQUEMENT ton shield personnalisé
+  # Dongle : empilement des deux shields.
+  # ergonaut_one_dongle EN PREMIER (il définit le label &st7789
+  # que l'overlay de prospector_adapter référence), puis
+  # prospector_adapter qui apporte le code et la config Prospector.
   - board: nice_nano@2.0.0//zmk
-    shield: ergonaut_one_dongle
+    shield: ergonaut_one_dongle prospector_adapter
+  - board: nice_nano@2.0.0//zmk
+    shield: ergonaut_one_dongle prospector_adapter
     snippet: studio-rpc-usb-uart
     cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: ergonaut_one_dongle_studio
